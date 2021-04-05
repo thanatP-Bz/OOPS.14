@@ -88,3 +88,35 @@ const Bree = new CalHeight('Bree', 178);
 const Mandy = new CalHeight('Mandy', 180);
 
 Bree.deHeight();
+
+//classes ES6
+class PersonInfo {
+      constructor(fristName, birthYear) {
+            this.fristName = fristName;
+            this.birthYear = birthYear;
+      }
+  //Method will be add to .prototype proproty
+      calAge() {
+           this.birthYear = 2021 - this.birthYear;
+           console.log(`${this.fristName} is ${this.birthYear} old`);
+      }
+
+      greet() {
+            console.log(`Hi ${this.fristName}`);
+      };
+};
+
+const Benz = new PersonInfo('Benz', 1992);
+console.log(Benz);
+
+Benz.calAge();
+Benz.greet();
+
+/* personInfo.prototype.greet = function() {
+      console.log(`Hello ${this.fristName}`);
+};
+ */
+// 1.classes are NOT hoisted
+// 2.classes are first-class citizen
+// 3.classes are excuted in strict mode
+
