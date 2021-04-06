@@ -112,6 +112,22 @@ console.log(Benz);
 Benz.calAge();
 Benz.greet();
 
+class FootBallTeam {
+      constructor (name, est) {
+            this.name = name;
+            this.est = est;
+      }
+      
+      establish() {
+            this.est = 2021 - this.est;
+            console.log(`${this.name} is established for ${this.est} years`)
+      };
+
+};
+
+const liverpool = new FootBallTeam('Liverpool', 1892);
+liverpool.establish();
+
 /* personInfo.prototype.greet = function() {
       console.log(`Hello ${this.fristName}`);
 };
@@ -120,3 +136,30 @@ Benz.greet();
 // 2.classes are first-class citizen
 // 3.classes are excuted in strict mode
 
+//getters and setters
+
+const accountPerson = {
+      owner: 'Alen',
+      partner: [],
+      movements: [200, 300, 500, 800],
+
+      get first() {
+            return this.movements.slice(0).shift();
+      },
+
+      set second(name) {
+            this.partner.push(name);
+      },
+
+      set add(num) {
+            this.movements.push(num);
+      }
+};
+
+console.log(accountPerson.first);
+
+accountPerson.second = 'Mike';
+console.log(accountPerson.partner);
+
+accountPerson.add = 350;
+console.log(accountPerson.movements);
