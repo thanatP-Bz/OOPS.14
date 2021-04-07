@@ -56,7 +56,7 @@ bmw.accelerate();
 bmw.brake();
  */
 ///
-const Diet = function(personName, cal, workout) {
+/* const Diet = function(personName, cal, workout) {
       this.personName = personName;
       this.cal = cal;
       this.workout = workout;
@@ -87,30 +87,45 @@ CalHeight.prototype.deHeight = function() {
 const Bree = new CalHeight('Bree', 178);
 const Mandy = new CalHeight('Mandy', 180);
 
-Bree.deHeight();
+Bree.deHeight(); */
 
 //classes ES6
 class PersonInfo {
-      constructor(fristName, birthYear) {
-            this.fristName = fristName;
+      constructor(fullName, birthYear) {
+            this.fullName = fullName;
             this.birthYear = birthYear;
       }
   //Method will be add to .prototype proproty
       calAge() {
            this.birthYear = 2021 - this.birthYear;
-           console.log(`${this.fristName} is ${this.birthYear} old`);
+           console.log(`${this.fristName} is ${this.birthYear} years old`);
       }
 
       greet() {
             console.log(`Hi ${this.fristName}`);
-      };
+      }
+
+      get age() {
+            return 2021 - this.birthYear;
+            
+      }
+
+      set fullName(name) {
+            if (name.includes(' ')) this._fullName = name;
+      else alert (`${name} not a fullname`);
+      }
+
+      get _fullName() {
+            return this._fullName;
+      }
 };
 
-const Benz = new PersonInfo('Benz', 1992);
-console.log(Benz);
+const benz = new PersonInfo('Thanat Benz', 1992);
+console.log(benz.age);
+benz.calAge();
+benz.greet();
 
-Benz.calAge();
-Benz.greet();
+
 
 class FootBallTeam {
       constructor (name, est) {
@@ -142,6 +157,7 @@ const accountPerson = {
       owner: 'Alen',
       partner: [],
       movements: [200, 300, 500, 800],
+      birthYear: 1992,
 
       get first() {
             return this.movements.slice(0).shift();
@@ -153,6 +169,10 @@ const accountPerson = {
 
       set add(num) {
             this.movements.push(num);
+      },
+
+      get age() {
+            return 2021 - this.birthYear;
       }
 };
 
@@ -163,3 +183,5 @@ console.log(accountPerson.partner);
 
 accountPerson.add = 350;
 console.log(accountPerson.movements);
+
+console.log(accountPerson.age);
