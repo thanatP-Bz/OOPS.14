@@ -111,12 +111,18 @@ class PersonInfo {
       }
 
       set fullName(name) {
+            console.log(name);
             if (name.includes(' ')) this._fullName = name;
-      else alert (`${name} not a fullname`);
+            else alert(`${name} is not a full name`);
       }
 
-      get _fullName() {
+      get fullName() {
             return this._fullName;
+      }
+
+      static hi() {
+            console.log('Hey there');
+            console.log(this);
       }
 };
 
@@ -126,22 +132,7 @@ benz.calAge();
 benz.greet();
 
 
-
-class FootBallTeam {
-      constructor (name, est) {
-            this.name = name;
-            this.est = est;
-      }
-      
-      establish() {
-            this.est = 2021 - this.est;
-            console.log(`${this.name} is established for ${this.est} years`)
-      };
-
-};
-
-const liverpool = new FootBallTeam('Liverpool', 1892);
-liverpool.establish();
+PersonInfo.hi();
 
 /* personInfo.prototype.greet = function() {
       console.log(`Hello ${this.fristName}`);
@@ -167,8 +158,8 @@ const accountPerson = {
             this.partner.push(name);
       },
 
-      set add(num) {
-            this.movements.push(num);
+      set add(mov) {
+            this.movements.push(mov);
       },
 
       get age() {
@@ -181,7 +172,23 @@ console.log(accountPerson.first);
 accountPerson.second = 'Mike';
 console.log(accountPerson.partner);
 
-accountPerson.add = 350;
+accountPerson.add = 200;
 console.log(accountPerson.movements);
 
 console.log(accountPerson.age);
+
+/////////
+/* class calpoints {
+      constructor(name, point) {
+            this.name = name;
+            this.point = point;
+      }
+
+      set extra() {
+            return this.point * 3;
+      }
+};
+
+const colin = new calpoints('Colin', 25);
+console.log(colin.extra); */
+
