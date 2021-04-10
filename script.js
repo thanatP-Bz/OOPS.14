@@ -134,6 +134,22 @@ benz.greet();
 
 PersonInfo.hi();
 
+///////////////object.create
+const PersonProto = {
+      calAge() {
+            this.birthYear = 2021 - this.birthYear;
+            console.log(`${this.fristName} is ${this.birthYear} years old`);
+       }
+};
+
+const wicky = Object.create(PersonProto);
+console.log(wicky);
+wicky.fristName = 'Wicky';
+wicky.birthYear = 1992;
+wicky.calAge();
+
+console.log(wicky.__proto__ === PersonProto);
+
 /* personInfo.prototype.greet = function() {
       console.log(`Hello ${this.fristName}`);
 };
@@ -144,7 +160,7 @@ PersonInfo.hi();
 
 //getters and setters
 
-const accountPerson = {
+/* const accountPerson = {
       owner: 'Alen',
       partner: [],
       movements: [200, 300, 500, 800],
@@ -176,7 +192,7 @@ accountPerson.add = 200;
 console.log(accountPerson.movements);
 
 console.log(accountPerson.age);
-
+ */
 /////////
 /* class calpoints {
       constructor(name, point) {
