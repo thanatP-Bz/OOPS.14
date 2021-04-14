@@ -208,3 +208,24 @@ console.log(accountPerson.age);
 const colin = new calpoints('Colin', 25);
 console.log(colin.extra); */
 
+////coding challege 2
+class Car {
+      constructor (carName, speed) {
+            this.speed = speed;
+            this.carName = carName;
+      }
+
+      get speedUs() {
+            return this.speed / 1.6;
+      }///get will return value;
+
+      set speedUs(speed) {
+            this.speed = speed * 1.6;
+      }
+};
+
+
+const carOne = new Car('Ford', 120);
+console.log(carOne.speedUs);
+carOne.speedUs = 50;
+console.log(carOne);
