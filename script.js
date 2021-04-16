@@ -328,3 +328,56 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
+//////////////////////
+class PersonInfo {
+      constructor(fullName, birthYear) {
+            this.fullName = fullName;
+            this.birthYear = birthYear;
+      }
+  //Method will be add to .prototype proproty
+      calAge() {
+           this.birthYear = 2021 - this.birthYear;
+           return `${this.fullName} is ${this.birthYear} years old`;
+      }
+
+      greet() {
+            return `Hi ${this.fristName}`;
+      }
+
+      get age() {
+            return 2021 - this.birthYear;
+            
+      }
+
+      set fullName(name) {
+            console.log(name);
+            if (name.includes(' ')) this._fullName = name;
+            else alert(`${name} is not a full name`);
+      }
+
+      get fullName() {
+            return this._fullName;
+      }
+      
+      /// Stactic method
+      static hi() {
+            console.log('Hey there');
+            console.log(this);
+      }
+};
+
+class StudentInfo extends PersonInfo {
+      constructor (fullName, birthYear, course) {
+      super (fullName, birthYear)
+      this.course = course;
+      }
+
+      introduce() {
+            return `Hello my name is ${this.fullName}`;
+      }
+};
+
+const martin = new StudentInfo('Henry Martin', 1994, 'Human');
+console.log(martin.introduce());
+console.log(martin.calAge());
+////////////////
