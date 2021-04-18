@@ -468,7 +468,7 @@ acc1._movement.push(200);
 
 //////////////
 //coding challege 4
-class Car2 { 
+class EVCl { 
      constructor (make, speed) {
       this.make = make;
       this.speed = speed;
@@ -482,34 +482,34 @@ class Car2 {
       brake () {
       this.speed -= 5;
       console.log(`${this.make} is going at ${this.speed}`);
+      return this;
       };
 };
 
 
-class EV extends Car2 {
+class EVA extends EVCl {
+      #charge;
+
       constructor (make, speed, charge) {
       super(make, speed);
-
       ///
-      this._charge = charge;
+      this.#charge = charge;
       }
 
       chargeBattery (chargeTo) {
-            this._charge = chargeTo;
+            this.#charge = chargeTo;
+            return this;
       }
 
       accelerate () {
             this.speed += 20;
-            this.charge --;
-            console.log(`${this.make} is going at ${this.speed} km/h with a charge of ${this.charge}`);
+            this.#charge --;
+            console.log(`${this.make} is going at ${this.speed} km/h with a charge of ${this.#charge}`);
+            return this;
       }
 };
 
 
-
-
-const tesla = new EV ('Tesla', 120, 23);
-tesla.chargeBattery(90);
-console.log(tesla);
-tesla.brake();
-tesla.accelerate();
+const honda = new EVA ('honda', 120, 23);
+console.log(honda);
+honda.accelerate().accelerate().brake().chargeBattery(30);
