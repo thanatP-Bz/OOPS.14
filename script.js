@@ -380,4 +380,136 @@ class StudentInfo extends PersonInfo {
 const martin = new StudentInfo('Henry Martin', 1994, 'Human');
 console.log(martin.introduce());
 console.log(martin.calAge());
+
 ////////////////
+///////////inheritence with constructor
+const PersonProto = {
+      calAge() {
+            return 2025 - this.birthYear;
+      },
+
+      init(firstName, birthYear) {
+            this.firstName = firstName;
+            this.birthYear = birthYear;
+      }
+};
+
+const StudentProto = Object.create(PersonProto);
+
+
+StudentProto.init = function (firstName, birthYear, course) {
+      PersonProto.init.call(this, firstName, birthYear);
+      this.course = course;
+};
+
+StudentProto.introduce = function(firstName) {
+      return `My name is ${firstName}`;
+}
+      
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'English');
+console.log(jay.introduce('Jay'));
+jay.calAge();
+
+/////////////another class
+/// Public Fields
+/// Private fields
+/// Public methods
+/// Private methods
+class Account {
+      //public fields(instances)
+      locale = navigator.language;
+      _movement = [];
+     
+      //2) private fields
+      #movement = [];
+      #pin;
+
+      constructor(owner, curr, pin) {
+            this.owner = owner;
+            this.curr = curr;
+            ///protected poproty
+            this.#pin = pin;
+            
+            //add_ to protect the information
+      }
+      //////3) public Methods
+      getMovment() {
+            return this.#movement;
+      }
+
+      deposit(value) {
+            this._movement.push(value);
+      }
+
+      withdrawal(value) {
+            this.deposit(-value);///We can call other method inside.
+      }
+
+      reqLoan(value) {
+            if (this._approval(value)) {
+                  this.deposit(value);
+            console.log('Loan approved')
+            }
+      };
+
+      //4) private Methods
+      _approval(value) {
+            return true;
+      }
+};
+
+const acc1 = new Account('James', 'USD', 1234);
+console.log(acc1);
+acc1.deposit(500);
+acc1.withdrawal(10);
+acc1._movement.push(200);
+
+//////////////
+//coding challege 4
+class Car2 { 
+     constructor (make, speed) {
+      this.make = make;
+      this.speed = speed;
+      }
+
+      accelerate () {
+      this.speed += 10;
+      console.log(`${this.make} is going to ${this.speed}`);
+      };
+
+      brake () {
+      this.speed -= 5;
+      console.log(`${this.make} is going at ${this.speed}`);
+      };
+};
+
+
+class EV extends Car2 {
+      constructor (make, speed, charge) {
+      super(make, speed);
+
+      ///
+      this._charge = charge;
+      }
+
+      chargeBattery (chargeTo) {
+            this._charge = chargeTo;
+      }
+
+      accelerate () {
+            this.speed += 20;
+            this.charge --;
+            console.log(`${this.make} is going at ${this.speed} km/h with a charge of ${this.charge}`);
+      }
+};
+
+
+
+
+const tesla = new EV ('Tesla', 120, 23);
+tesla.chargeBattery(90);
+console.log(tesla);
+tesla.brake();
+tesla.accelerate();
